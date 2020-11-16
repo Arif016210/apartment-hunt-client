@@ -4,8 +4,6 @@ import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
 import { CreateUserWithEmailAndPassword, handleFbLogin, handleGoogleSignIn, handleSignOut, initializeLoginFramework, signInWithEmailAndPassword } from './loginManager';
 import Navbar from '../Home/Navbar/Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faGoogle } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -52,7 +50,7 @@ const Login = () => {
 
     const handleResponse = (res, redirect) => {
         setUser(res);
-        setLogInUser(res);
+        setLoggedInUser(res);
         if (redirect) {
             history.replace(from);
         };
@@ -134,9 +132,9 @@ const Login = () => {
                         </form>
 
                         <br />
-                        <p style={{ color: 'red' }} > {user.error} </p>
+                        <p style={{ color: 'red' }} > {newUser.error} </p>
                         {
-                            user.success && <p style={{ color: 'green' }} > User {newUser ? 'Create' : 'Logged in'} successfully </p>
+                            newUser.success && <p style={{ color: 'green' }} > User {newUser ? 'Create' : 'Logged in'} successfully </p>
                         }
                     </div>
                 </div>

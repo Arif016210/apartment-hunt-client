@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 
+
 export const UserContext = createContext();
 
 
@@ -30,21 +31,21 @@ function App(props) {
           <Route path="/home" >
             <Home></Home>
           </Route>
-          <PrivateRoute path="/homeDetails" >
+          <Route path="/homeDetails/:houseId" >
             <HomeDetails></HomeDetails>
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Login></Login>
           </Route>
-          <PrivateRoute path="/bookingList" >
+          <Route path="/bookingList" >
             <BookingList></BookingList>
-          </PrivateRoute>
-          <PrivateRoute path="/addRent" >
+          </Route>
+          <Route path="/addRent" >
             <AddRent></AddRent>
-          </PrivateRoute>
-          <PrivateRoute path="/myRent" >
+          </Route>
+          <Route path="/myRent" >
             <MyRent></MyRent>
-          </PrivateRoute>
+          </Route>
         </Switch>
       </Router>
     </UserContext.Provider>

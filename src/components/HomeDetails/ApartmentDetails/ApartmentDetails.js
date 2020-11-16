@@ -6,9 +6,17 @@ import pic9 from '../../../images/Rectangle 408.png';
 import pic10 from '../../../images/Rectangle 409.png';
 import pic11 from '../../../images/Rectangle 410.png';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import fakeData from '../../../fakeData';
 
-const ApartmentDetails = () => {
+const ApartmentDetails = (props) => {
+    const { houseId } = useParams();
+    const selectedHouse = fakeData.find(house => house.id === houseId);
+
+
+
+    const { title, img, img1, img2, img3, img4, price, apartmentDescription, priceDetails, propertyDetails } = selectedHouse;
+
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
@@ -17,48 +25,40 @@ const ApartmentDetails = () => {
                 <div className="row">
                     <div className="col-md-8">
                         <div className="img-section">
-                            <img src={pic7} alt="pic" className="img-fluid" />
+                            <img src={img} alt="pic" className="img-fluid" />
 
                             <div className="row img-section-small">
                                 <div className="col-md-3">
-                                    <img src={pic8} alt="pic" className="img-fluid" />
+                                    <img src={img1} alt="pic" className="img-fluid" />
                                 </div>
                                 <div className="col-md-3">
-                                    <img src={pic9} alt="pic" className="img-fluid" />
+                                    <img src={img2} alt="pic" className="img-fluid" />
                                 </div>
                                 <div className="col-md-3">
-                                    <img src={pic10} alt="pic" className="img-fluid" />
+                                    <img src={img3} alt="pic" className="img-fluid" />
                                 </div>
                                 <div className="col-md-3">
-                                    <img src={pic11} alt="pic" className="img-fluid" />
+                                    <img src={img4} alt="pic" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="col-md-8">
-                                <h2>Family Apartment Three</h2>
+                                <h2> {title} </h2>
                             </div>
                             <div className="col-md-4">
-                                <h2 style={{ float: 'right' }}>$212</h2>
+                                <h2 style={{ float: 'right' }}>$ {price} </h2>
                             </div>
                         </div>
 
 
-                        <p>3000 sq-ft., 3 Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
+                        <p> {apartmentDescription} </p>
                         <h3>Price Details-</h3>
-                        <p>Rent/Month: $550 (negotiable) </p>
-                        <p>Service Charge : 8,000/= Tk per month,subject to change </p>
-                        <p>Security Deposit : 3 month’s rent Flat </p>
-                        <p>Release Policy : 3 months earlier notice required</p>
+                        <p> {priceDetails} </p>
 
                         <h3>Property Details-</h3>
-                        <p>Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area.</p>
-                        <p>Flat Size : 3000 Sq Feet.</p>
-                        <p>Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit)</p>
-                        <p>Room Category : 3 Large Bed Rooms with 3 Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.</p>
-                        <p>Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.</p>
-                        <p>Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera</p>
+                        <p> {propertyDetails} </p>
 
                     </div>
 
