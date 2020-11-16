@@ -6,6 +6,7 @@ import pic9 from '../../../images/Rectangle 408.png';
 import pic10 from '../../../images/Rectangle 409.png';
 import pic11 from '../../../images/Rectangle 410.png';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const ApartmentDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -86,7 +87,10 @@ const ApartmentDetails = () => {
                             </div>
 
                             <div className="form-group">
-                                <button type="submit" className="btn-modify form-control">Submit</button>
+                                <Link to="/myRent">
+                                    <button type="submit" className="btn-modify form-control">Submit</button>
+                                </Link>
+
                             </div>
                         </form>
                     </div>
